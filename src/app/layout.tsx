@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/navbar";
+// import Background from "@/components/Background"; // Removed as it wasn't used
+import CustomCursor from "@/components/cursor";
+import { CursorProvider } from '../context/cursorcontext'; // Import the Provider
 
 export const metadata: Metadata = {
   title: "Vibhor Saxena's Portfolio",
@@ -10,13 +13,20 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="bg-white text-gray-900">
-        {/* Responsive Navbar */}
-        <Navbar />
+      {/* 1. Wrap the entire body content with CursorProvider */}
+      <CursorProvider>
+        <body className="relative text-gray-900">
 
-        {/* Main content with padding so it doesn’t overlap fixed Navbar */}
-        <main className="pt-20">{children}</main>
-      </body>
+          {/* 2. Navbar and CustomCursor are now inside the Provider, 
+              allowing them to share the hover state. */}
+          <Navbar />
+          
+          <CustomCursor /> 
+
+          {/* Main content (with spacing to avoid overlap) */}
+          <main className="pt-20 relative z-10">{children}</main>
+        </body>
+      </CursorProvider>
     </html>
   );
 }
