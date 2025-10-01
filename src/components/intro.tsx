@@ -66,7 +66,6 @@ export default function Intro() {
     <main
   className="relative h-screen w-screen overflow-hidden flex flex-col justify-start items-center text-center"
   style={{
-    backgroundImage: "url('/dark-road-background.jpg')",
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundAttachment: 'fixed',

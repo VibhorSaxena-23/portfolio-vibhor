@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/navbar";
-// import Background from "@/components/Background"; // Removed as it wasn't used
+ import Background from "@/components/Background"; // Removed as it wasn't used
 import CustomCursor from "@/components/cursor";
 import { CursorProvider } from '../context/cursorcontext'; // Import the Provider
 
@@ -16,6 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       {/* 1. Wrap the entire body content with CursorProvider */}
       <CursorProvider>
         <body className="relative text-gray-900">
+          <Background/>
 
           {/* 2. Navbar and CustomCursor are now inside the Provider, 
               allowing them to share the hover state. */}
