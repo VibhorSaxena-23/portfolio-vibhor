@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Dynamic rotating titles
 const titles = [
@@ -29,8 +29,7 @@ export default function Intro() {
   // 🔒 Disable page scroll while this component is active
   useEffect(() => {
     const originalOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-
+    document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = originalOverflow;
     };
@@ -63,52 +62,47 @@ export default function Intro() {
   };
 
   return (
-    <main
-  className="relative h-screen w-screen overflow-hidden flex flex-col justify-start items-center text-center"
-  style={{
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundAttachment: 'fixed',
-  }}
->
-  {/* Overlay */}
-  <div className="absolute inset-0 bg-black/70 backdrop-blur-sm z-0" />
+    <main className="relative h-screen w-screen flex items-center justify-center overflow-hidden text-center">
+      {/* ✅ Floating glass card with entry animation */}
+      <motion.div
+        className="relative z-10 flex flex-col items-center justify-center gap-6 px-6 py-8 rounded-2xl 
+                   bg-white/10 backdrop-blur-md border border-white/20 shadow-lg max-w-2xl w-[90%] md:w-auto"
+        initial={{ opacity: 0, y: 50, scale: 0.9 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
+      >
+        <h1 className="text-4xl md:text-6xl font-bold text-white drop-shadow-lg">
+          Hello, I'm Vibhor Saxena.
+        </h1>
 
-  {/* Content wrapper */}
-  <div className="relative z-10 px-4 pt-65 -translate-y-6">
-    <h1 className="text-4xl md:text-6xl font-bold text-white drop-shadow-lg">
-      Hello, I'm Vibhor Saxena.
-    </h1>
-
-    <h2
-      className="relative text-2xl md:text-4xl font-semibold text-cyan-300 mt-4 inline-block"
-      style={{
-        perspective: '1000px',
-        minHeight: '3rem',
-      }}
-    >
-      <AnimatePresence mode="wait">
-        <motion.span
-          key={currentTitle}
-          className="inline-block origin-center"
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          variants={flipVariants}
+        <h2
+          className="relative text-2xl md:text-4xl font-semibold text-cyan-300 inline-block"
           style={{
-            backfaceVisibility: 'hidden',
-            padding: '0.25rem 1rem',
-            borderRadius: '0.5rem',
-            background: 'rgba(0, 136, 255, 0.1)',
-            boxShadow: '0 0 10px rgba(0, 136, 255, 0.4)',
+            perspective: "1000px",
+            minHeight: "3rem",
           }}
         >
-          {currentTitle}
-        </motion.span>
-      </AnimatePresence>
-    </h2>
-  </div>
-</main>
-
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={currentTitle}
+              className="inline-block origin-center"
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={flipVariants}
+              style={{
+                backfaceVisibility: "hidden",
+                padding: "0.25rem 1rem",
+                borderRadius: "0.5rem",
+                background: "rgba(0, 136, 255, 0.15)",
+                boxShadow: "0 0 15px rgba(0, 136, 255, 0.4)",
+              }}
+            >
+              {currentTitle}
+            </motion.span>
+          </AnimatePresence>
+        </h2>
+      </motion.div>
+    </main>
   );
 }
