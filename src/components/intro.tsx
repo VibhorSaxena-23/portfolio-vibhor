@@ -26,7 +26,6 @@ export default function Intro() {
     return () => clearInterval(intervalId);
   }, []);
 
-  // 🔒 Disable page scroll while this component is active
   useEffect(() => {
     const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -63,9 +62,8 @@ export default function Intro() {
 
   return (
     <main className="relative h-screen w-screen flex items-center justify-center overflow-hidden text-center">
-      {/* ✅ Floating glass card with entry animation */}
       <motion.div
-        className="relative z-10 flex flex-col items-center justify-center gap-6 px-6 py-8 rounded-2xl 
+        className="relative z-10 flex flex-col items-center justify-center gap-6 px-6 py-4 rounded-2xl 
                    bg-white/10 backdrop-blur-md border border-white/20 shadow-lg max-w-2xl w-[90%] md:w-auto"
         initial={{ opacity: 0, y: 50, scale: 0.9 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}

@@ -51,7 +51,7 @@ export default function About() {
         </span>
       </motion.h2>
 
-      {/* Content Wrapper - Changed from whileInView to animate, added key */}
+      {/* Content Wrapper */}
       <motion.div
         key={key}
         className="flex flex-col gap-8 text-gray-300 text-base sm:text-lg leading-relaxed"
@@ -62,7 +62,7 @@ export default function About() {
         {/* Intro */}
         <motion.div 
           variants={fadeInUp}
-          className="p-6 rounded-lg bg-gradient-to-br from-gray-900/50 to-gray-800/30 border border-cyan-500/20 shadow-xl"
+          className="p-6 rounded-2xl bg-gradient-to-br from-gray-900/50 to-gray-800/30 border border-cyan-500/20 shadow-xl hover:-translate-y-1 transition-transform duration-200"
         >
           <p>
             Hey, I am <span className="font-bold text-cyan-400">Vibhor Saxena</span>!
@@ -79,7 +79,7 @@ export default function About() {
         {/* Experience */}
         <motion.div 
           variants={fadeInUp}
-          className="p-6 rounded-lg bg-gradient-to-br from-gray-900/50 to-gray-800/30 border border-cyan-500/20 shadow-xl"
+          className="p-6 rounded-2xl bg-gradient-to-br from-gray-900/50 to-gray-800/30 border border-cyan-500/20 shadow-xl hover:-translate-y-1 transition-transform duration-200"
         >
           <p>
             I have interned at{" "}
@@ -107,7 +107,7 @@ export default function About() {
         {/* Passion */}
         <motion.div 
           variants={fadeInUp}
-          className="p-6 rounded-lg bg-gradient-to-br from-gray-900/50 to-gray-800/30 border border-cyan-500/20 shadow-xl"
+          className="p-6 rounded-2xl bg-gradient-to-br from-gray-900/50 to-gray-800/30 border border-cyan-500/20 shadow-xl hover:-translate-y-1 transition-transform duration-200"
         >
           <p>
             I love building <span className="font-bold text-white">scalable applications</span>{" "}
@@ -125,7 +125,7 @@ export default function About() {
         {/* Responsibilities */}
         <motion.div 
           variants={fadeInUp}
-          className="p-6 rounded-lg bg-gradient-to-br from-gray-900/50 to-gray-800/30 border border-purple-500/20 shadow-xl"
+          className="p-6 rounded-2xl bg-gradient-to-br from-purple-900/30 to-gray-800/30 border border-purple-500/20 shadow-xl hover:-translate-y-1 transition-transform duration-200"
         >
           <h3 className="text-2xl sm:text-3xl font-bold uppercase tracking-widest mb-4 text-cyan-300 flex items-center gap-2">
             <span className="text-cyan-400">►</span> Responsibilities
@@ -146,7 +146,7 @@ export default function About() {
         {/* Coursework */}
         <motion.div 
           variants={fadeInUp}
-          className="p-6 rounded-lg bg-gradient-to-br from-gray-900/50 to-gray-800/30 border border-cyan-500/20 shadow-xl"
+          className="p-6 rounded-2xl bg-gradient-to-br from-gray-900/50 to-gray-800/30 border border-cyan-500/20 shadow-xl hover:-translate-y-1 transition-transform duration-200"
         >
           <h3 className="text-2xl sm:text-3xl font-bold uppercase tracking-widest mb-4 text-cyan-300 flex items-center gap-2">
             <span className="text-cyan-400">►</span> Computer Science Coursework
