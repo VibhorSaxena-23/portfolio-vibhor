@@ -7,7 +7,7 @@
 @import "tailwindcss";
 
 /* Your custom theme + animations */
-@theme {
+:root {
   --color-primary: #030412;
   --color-midnight: #06091f;
   --color-navy: #161a31;
@@ -23,47 +23,48 @@
   --color-coral: #ea4884;
 
   --animate-orbit: orbit 50s linear infinite;
-  @keyframes orbit {
-    0% {
-      transform: rotate(calc(var(--angle) * 1deg))
-        translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg));
-    }
-    100% {
-      transform: rotate(calc(var(--angle) * 1deg + 360deg))
-        translateY(calc(var(--radius) * 1px))
-        rotate(calc((var(--angle) * -1deg) - 360deg));
-    }
-  }
-
   --animate-marquee: marquee 50s linear infinite;
   --animate-marquee-vertical: marquee-vertical 50s linear infinite;
+}
 
-  @keyframes marquee {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(calc(-100% - var(--gap)));
-    }
+@keyframes orbit {
+  0% {
+    transform: rotate(calc(var(--angle) * 1deg))
+      translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg));
   }
+  100% {
+    transform: rotate(calc(var(--angle) * 1deg + 360deg))
+      translateY(calc(var(--radius) * 1px))
+      rotate(calc((var(--angle) * -1deg) - 360deg));
+  }
+}
 
-  @keyframes marquee-vertical {
-    from {
-      transform: translateY(0);
-    }
-    to {
-      transform: translateY(calc(-100% - var(--gap)));
-    }
+@keyframes marquee {
+  from {
+    transform: translateX(0);
   }
-   /* ADD THIS KEYFRAME for the blinking cursor */
-  @keyframes blink {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0;
-    }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+  }
+}
+
+/* ADD THIS KEYFRAME for the blinking cursor */
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
   }
 }
 
@@ -79,44 +80,18 @@ body {
   cursor: none;
 }
 
-/* Utility classes */
-.c-space {
-  @apply sm:px-10 px-5 lg:px-15;
-}
-.hover-animation {
-  @apply hover:-translate-y-1 duration-200;
-}
-.section-spacing {
-  @apply min-h-screen mt-20 md:mt-30;
-}
-.text-heading {
-  @apply font-bold text-3xl md:text-4xl;
-}
-.headtext {
-  @apply mt-2 mb-2 text-xl;
-}
-.subtext {
-  @apply text-neutral-400 text-sm md:text-base text-pretty;
-}
+
 .animate-blink {
   animation: blink 1s step-end infinite;
 }
 
 /* Navigation */
-.nav-ul {
-  @apply flex flex-col items-center gap-4 sm:flex-row md:gap-6 relative z-20;
-}
-.nav-li {
-  @apply text-neutral-400 hover:text-white max-sm:w-full max-sm:rounded-md py-2 max-sm:px-5;
-}
-.nav-link {
-  @apply text-lg md:text-base hover:text-white transition-colors;
-}
-
-/* Button Components */
-.btn {
-  @apply relative px-1 py-4 text-sm text-center rounded-full font-extralight bg-primary w-[12rem] cursor-pointer overflow-hidden;
-}
+/* Remove @apply from CSS. Use these Tailwind classes in your HTML/JSX:
+   class="flex flex-col items-center gap-4 sm:flex-row md:gap-6 relative z-20"
+   class="text-neutral-400 hover:text-white max-sm:w-full max-sm:rounded-md py-2 max-sm:px-5"
+   class="text-lg md:text-base hover:text-white transition-colors"
+   class="relative px-1 py-4 text-sm text-center rounded-full font-extralight bg-primary w-[12rem] cursor-pointer overflow-hidden"
+*/
 
 /* About Section */
 /* .grid-1 {
@@ -134,9 +109,7 @@ body {
 /* Remove @apply from CSS. Use these Tailwind classes in your HTML/JSX:
    class="row-span-1 md:col-span-4 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200"
 */
-.grid-5 {
-  /* Tailwind utility classes should be used in markup, not in CSS */
-}
+
 /* .grid-default-color {
   @apply p-6 bg-gradient-to-b from-storm to-indigo rounded-2xl;
 } */
