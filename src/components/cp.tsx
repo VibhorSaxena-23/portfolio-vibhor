@@ -51,11 +51,6 @@ export default function CompetitiveProgramming() {
     },
   ];
 
-  const usernames = [
-    { platform: "Codeforces", username: "vibhorsaxena000", color: "blue", link: "https://codeforces.com/profile/vibhorsaxena000" },
-    { platform: "CodeChef", username: "chaosconqueror", color: "orange", link: "https://www.codechef.com/users/chaosconqueror" },
-    { platform: "LeetCode", username: "VibhorSaxena-23", color: "green", link: "https://leetcode.com/u/VibhorSaxena-23/" },
-  ];
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 40, scale: 0.95 },
@@ -108,7 +103,7 @@ export default function CompetitiveProgramming() {
           variants={fadeInUp}
           className="text-gray-300 text-center text-base sm:text-lg max-w-3xl mx-auto leading-relaxed"
         >
-          I am passionate about solving algorithmic challenges and actively participate in various competitive programming platforms. Over the years, I've improved my problem-solving skills and achieved notable rankings.
+          I am passionate about solving algorithmic challenges and actively participate in various competitive programming platforms. Over the years, I&apos;ve improved my problem-solving skills and achieved notable rankings.
         </motion.p>
 
         {/* C++ Badge */}

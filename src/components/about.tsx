@@ -116,7 +116,7 @@ export default function About() {
               algorithmic challenges
             </code>
             .  
-            In Competitive Programming, I'm an{" "}
+            In Competitive Programming, I&apos;m an{" "}
             <span className="font-semibold text-cyan-400">Expert on Codeforces (1600+)</span>  
             and a <span className="font-semibold text-cyan-400">4★ Coder on CodeChef (Global Rank 90)</span>.
           </p>
