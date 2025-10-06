@@ -231,7 +231,7 @@ export default function CompetitiveProgramming() {
           variants={fadeInUp}
           className="relative p-8 rounded-lg bg-gradient-to-br from-gray-900/70 to-gray-800/40 border border-gray-700/50 shadow-2xl"
         >
-          <div className="absolute top-4 left-4 text-6xl text-cyan-500/20 font-serif">"</div>
+          <div className="absolute top-4 left-4 text-6xl text-cyan-500/20 font-serif">&ldquo;</div>
           <blockquote className="relative z-10 text-center">
             <p className="text-gray-300 text-base sm:text-lg italic leading-relaxed mb-4 px-8">
               I stopped worrying about competition in contemporary art. It feels a little bit more pure. That&apos;s where I am, one step back.
