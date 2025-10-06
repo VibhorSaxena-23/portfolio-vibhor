@@ -25,7 +25,7 @@ export default function CustomCursor() {
     const handleMouseMove = (e: MouseEvent) => {
       mouseX.set(e.clientX - CURSOR_SIZE / 2);
       mouseY.set(e.clientY - CURSOR_SIZE / 2);
-    };
+    }
 
     const handleClick = () => {
       clickPulse.set(1);
@@ -38,7 +38,7 @@ export default function CustomCursor() {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('click', handleClick);
     };
-  }, []);
+  },  [clickPulse, mouseX, mouseY]);
 
   return (
     <>

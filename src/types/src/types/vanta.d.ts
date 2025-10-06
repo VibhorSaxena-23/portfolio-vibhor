@@ -5,7 +5,7 @@ declare module "vanta/dist/vanta.birds.min" {
 
   interface VantaOptions {
     el: HTMLElement;
-    THREE: any;
+    THREE: unknown;
     mouseControls?: boolean;
     touchControls?: boolean;
     gyroControls?: boolean;

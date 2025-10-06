@@ -70,7 +70,7 @@ export default function Intro() {
         transition={{ duration: 1.2, ease: "easeOut" }}
       >
         <h1 className="text-4xl md:text-6xl font-bold text-white drop-shadow-lg">
-          Hello, I'm Vibhor Saxena.
+          Hello, I&apos;m Vibhor Saxena.
         </h1>
 
         <h2

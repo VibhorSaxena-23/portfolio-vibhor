@@ -51,7 +51,6 @@ export default function CompetitiveProgramming() {
     },
   ];
 
-
   const fadeInUp = {
     hidden: { opacity: 0, y: 40, scale: 0.95 },
     visible: {
@@ -103,7 +102,7 @@ export default function CompetitiveProgramming() {
           variants={fadeInUp}
           className="text-gray-300 text-center text-base sm:text-lg max-w-3xl mx-auto leading-relaxed"
         >
-          I am passionate about solving algorithmic challenges and actively participate in various competitive programming platforms. Over the years, I&apos;ve improved my problem-solving skills and achieved notable rankings.
+          I am passionate about solving algorithmic challenges and actively participate in various competitive programming platforms. Over the years,  I&apos;ve improved my problem-solving skills and achieved notable rankings.
         </motion.p>
 
         {/* C++ Badge */}
@@ -213,7 +212,7 @@ export default function CompetitiveProgramming() {
             <span className="text-green-400">►</span> Problem Collection
           </h3>
           <p className="text-gray-300 mb-4 text-sm sm:text-base">
-            I curate high-quality competitive programming problems organized by topics and difficulty levels for reference and practice.
+            I curate high quality competitive programming problems organized by topics and difficulty levels for reference and practice.
           </p>
           <a
             href="https://github.com/VibhorSaxena-23/DSA_Topic_wise_problems"
@@ -235,13 +234,13 @@ export default function CompetitiveProgramming() {
           <div className="absolute top-4 left-4 text-6xl text-cyan-500/20 font-serif">"</div>
           <blockquote className="relative z-10 text-center">
             <p className="text-gray-300 text-base sm:text-lg italic leading-relaxed mb-4 px-8">
-              I stopped worrying about competition in contemporary art. It feels a little bit more pure. That's where I am, one step back.
+              I stopped worrying about competition in contemporary art. It feels a little bit more pure. That&apos;s where I am, one step back.
             </p>
             <footer className="text-cyan-400 font-semibold">
               — Takashi Murakami
             </footer>
           </blockquote>
-          <div className="absolute bottom-4 right-4 text-6xl text-cyan-500/20 font-serif rotate-180">"</div>
+          <div className="absolute bottom-4 right-4 text-6xl text-cyan-500/20 font-serif rotate-180">&rdqoa;</div>
         </motion.div>
 
         {/* Bottom decorative divider */}

@@ -149,7 +149,7 @@ export default function Skills() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 0.8 }}
       >
-        A comprehensive overview of technologies, frameworks, and tools I've mastered through
+        A comprehensive overview of technologies, frameworks, and tools I&apos;ve mastered through
         projects, internships, and competitive programming.
       </motion.p>
 
