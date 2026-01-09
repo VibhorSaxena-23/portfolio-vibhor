@@ -240,7 +240,7 @@ export default function CompetitiveProgramming() {
               — Takashi Murakami
             </footer>
           </blockquote>
-          <div className="absolute bottom-4 right-4 text-6xl text-cyan-500/20 font-serif rotate-180">&rdqoa;</div>
+          <div className="absolute bottom-4 right-4 text-6xl text-cyan-500/20 font-serif rotate-180">&ldquo;</div>
         </motion.div>
 
         {/* Bottom decorative divider */}
