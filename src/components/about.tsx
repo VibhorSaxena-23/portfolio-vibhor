@@ -26,7 +26,7 @@ export default function About() {
       className="min-h-screen flex flex-col px-6 sm:px-20 max-w-5xl mx-auto space-y-10 font-mono py-0 mb-20"
     >
       {/* Section Heading */}
-      <SectionHeading text="About Me" />
+      <SectionHeading text="About" />
 
       <motion.div
         className="flex flex-col gap-8 text-gray-300 text-base sm:text-lg leading-relaxed"

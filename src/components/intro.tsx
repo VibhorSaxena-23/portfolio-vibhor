@@ -26,6 +26,7 @@ export default function Intro() {
     return () => clearInterval(intervalId);
   }, []);
 
+  // Prevent scroll during intro
   useEffect(() => {
     const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -61,10 +62,40 @@ export default function Intro() {
   };
 
   return (
-    <main className="relative h-screen w-screen flex items-center justify-center overflow-hidden text-center">
+    <main
+      className="
+        relative
+        w-screen
+        flex
+        items-center
+        justify-center
+        overflow-hidden
+        text-center
+        min-h-[100svh]
+        md:h-screen
+      "
+    >
       <motion.div
-        className="relative z-10 flex flex-col items-center justify-center gap-6 px-6 py-4 rounded-2xl 
-                   bg-white/10 backdrop-blur-md border border-white/20 shadow-lg max-w-2xl w-[90%] md:w-auto"
+        className="
+          relative
+          z-10
+          flex
+          flex-col
+          items-center
+          justify-center
+          gap-6
+          px-6
+          py-6
+          rounded-2xl
+          bg-white/10
+          backdrop-blur-md
+          border
+          border-white/20
+          shadow-lg
+          max-w-2xl
+          w-[90%]
+          md:w-auto
+        "
         initial={{ opacity: 0, y: 50, scale: 0.9 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
