@@ -9,9 +9,7 @@ export default function Skills() {
   const [key, setKey] = useState(0);
 
   useEffect(() => {
-    // Reset animations when component mounts
-    setKey(prev => prev + 1);
-    
+    setKey((prev) => prev + 1);
     let i = 0;
     const interval = setInterval(() => {
       setDisplayText(fullText.slice(0, i + 1));
@@ -44,7 +42,13 @@ export default function Skills() {
       title: "Core CS",
       icon: "💻",
       color: "blue",
-      skills: ["Data Structures", "Algorithms", "Operating Systems", "Computer Networks", "DBMS"],
+      skills: [
+        "Data Structures",
+        "Algorithms",
+        "Operating Systems",
+        "Computer Networks",
+        "DBMS",
+      ],
     },
     {
       title: "Tools & Platforms",
@@ -56,7 +60,12 @@ export default function Skills() {
       title: "Specializations",
       icon: "⭐",
       color: "yellow",
-      skills: ["Competitive Programming", "Machine Learning", "Problem Solving", "System Design"],
+      skills: [
+        "Competitive Programming",
+        "Machine Learning",
+        "Problem Solving",
+        "System Design",
+      ],
     },
   ];
 
@@ -64,62 +73,60 @@ export default function Skills() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-      },
+      transition: { staggerChildren: 0.15 },
     },
   };
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 30, scale: 0.9 },
+    hidden: { opacity: 0, y: 30, scale: 0.95 },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut" as const,
-      },
+      transition: { duration: 0.6, ease: "easeOut" as const },
     },
   };
 
   const getColorClasses = (color: string) => {
-    const colors: Record<string, { border: string; text: string; glow: string; bg: string }> = {
+    const colors: Record<
+      string,
+      { border: string; text: string; bg: string; shadow: string }
+    > = {
       cyan: {
         border: "border-cyan-500/30",
         text: "text-cyan-400",
-        glow: "shadow-cyan-500/20",
-        bg: "from-cyan-900/10 to-gray-900/50",
+        bg: "bg-gray-900/50",
+        shadow: "shadow-cyan-500/10",
       },
       green: {
         border: "border-green-500/30",
         text: "text-green-400",
-        glow: "shadow-green-500/20",
-        bg: "from-green-900/10 to-gray-900/50",
+        bg: "bg-gray-900/50",
+        shadow: "shadow-green-500/10",
       },
       purple: {
         border: "border-purple-500/30",
         text: "text-purple-400",
-        glow: "shadow-purple-500/20",
-        bg: "from-purple-900/10 to-gray-900/50",
+        bg: "bg-gray-900/50",
+        shadow: "shadow-purple-500/10",
       },
       blue: {
         border: "border-blue-500/30",
         text: "text-blue-400",
-        glow: "shadow-blue-500/20",
-        bg: "from-blue-900/10 to-gray-900/50",
+        bg: "bg-gray-900/50",
+        shadow: "shadow-blue-500/10",
       },
       orange: {
         border: "border-orange-500/30",
         text: "text-orange-400",
-        glow: "shadow-orange-500/20",
-        bg: "from-orange-900/10 to-gray-900/50",
+        bg: "bg-gray-900/50",
+        shadow: "shadow-orange-500/10",
       },
       yellow: {
         border: "border-yellow-500/30",
         text: "text-yellow-400",
-        glow: "shadow-yellow-500/20",
-        bg: "from-yellow-900/10 to-gray-900/50",
+        bg: "bg-gray-900/50",
+        shadow: "shadow-yellow-500/10",
       },
     };
     return colors[color];
@@ -149,11 +156,11 @@ export default function Skills() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 0.8 }}
       >
-        A comprehensive overview of technologies, frameworks, and tools I&apos;ve mastered through
-        projects, internships, and competitive programming.
+        A comprehensive overview of technologies, frameworks, and tools I&apos;ve
+        mastered through projects, internships, and competitive programming.
       </motion.p>
 
-      {/* Skills Grid - Removed viewport trigger, using key to reset */}
+      {/* Skills Grid */}
       <motion.div
         key={key}
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
@@ -167,18 +174,20 @@ export default function Skills() {
             <motion.div
               key={idx}
               variants={cardVariants}
-              whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
-              className={`p-6 rounded-lg bg-gradient-to-br ${colorClass.bg} border ${colorClass.border} shadow-xl ${colorClass.glow} hover:shadow-2xl transition-all duration-300`}
+              whileHover={{ scale: 1.03 }}
+              className={`p-6 rounded-xl ${colorClass.bg} border ${colorClass.border} ${colorClass.shadow} shadow-xl backdrop-blur-sm hover:-translate-y-1 transition-all duration-300`}
             >
-              {/* Category Header */}
-              <div className="flex items-center gap-3 mb-4 pb-3 border-b border-gray-700">
+              {/* Header */}
+              <div className="flex items-center gap-3 mb-4 pb-3 border-b border-gray-700/50">
                 <span className="text-3xl">{category.icon}</span>
-                <h3 className={`text-xl font-bold ${colorClass.text} tracking-wide`}>
+                <h3
+                  className={`text-xl font-bold ${colorClass.text} tracking-wide`}
+                >
                   {category.title}
                 </h3>
               </div>
 
-              {/* Skills List */}
+              {/* Skills */}
               <ul className="space-y-2">
                 {category.skills.map((skill, skillIdx) => (
                   <li
@@ -195,16 +204,16 @@ export default function Skills() {
         })}
       </motion.div>
 
-      {/* Bottom decorative divider */}
+      {/* Divider */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8 }}
         className="flex justify-center items-center gap-4 pt-8 pb-4"
       >
-        <div className="h-px w-20 bg-gradient-to-r from-transparent to-cyan-500"></div>
+        <div className="h-px w-20 bg-gradient-to-r from-transparent to-cyan-500" />
         <span className="text-cyan-400 text-2xl">◆</span>
-        <div className="h-px w-20 bg-gradient-to-l from-transparent to-cyan-500"></div>
+        <div className="h-px w-20 bg-gradient-to-l from-transparent to-cyan-500" />
       </motion.div>
     </section>
   );

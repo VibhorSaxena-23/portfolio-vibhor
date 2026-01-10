@@ -9,8 +9,7 @@ export default function CompetitiveProgramming() {
   const [key, setKey] = useState(0);
 
   useEffect(() => {
-    setKey(prev => prev + 1);
-    
+    setKey((prev) => prev + 1);
     let i = 0;
     const interval = setInterval(() => {
       setDisplayText(fullText.slice(0, i + 1));
@@ -52,7 +51,7 @@ export default function CompetitiveProgramming() {
   ];
 
   const fadeInUp = {
-    hidden: { opacity: 0, y: 40, scale: 0.95 },
+    hidden: { opacity: 0, y: 40, scale: 0.96 },
     visible: {
       opacity: 1,
       y: 0,
@@ -62,15 +61,20 @@ export default function CompetitiveProgramming() {
   };
 
   const getColorClasses = (color: string) => {
-    const colors: Record<string, { border: string; text: string; bg: string }> = {
-      blue: { border: "border-blue-500/30", text: "text-blue-400", bg: "from-blue-900/10 to-gray-900/50" },
-      orange: { border: "border-orange-500/30", text: "text-orange-400", bg: "from-orange-900/10 to-gray-900/50" },
-      cyan: { border: "border-cyan-500/30", text: "text-cyan-400", bg: "from-cyan-900/10 to-gray-900/50" },
-      purple: { border: "border-purple-500/30", text: "text-purple-400", bg: "from-purple-900/10 to-gray-900/50" },
-      green: { border: "border-green-500/30", text: "text-green-400", bg: "from-green-900/10 to-gray-900/50" },
+    const colors: Record<string, { border: string; text: string }> = {
+      blue: { border: "border-blue-500/30", text: "text-blue-400" },
+      orange: { border: "border-orange-500/30", text: "text-orange-400" },
+      cyan: { border: "border-cyan-500/30", text: "text-cyan-400" },
+      purple: { border: "border-purple-500/30", text: "text-purple-400" },
+      green: { border: "border-green-500/30", text: "text-green-400" },
     };
     return colors[color];
   };
+
+  // 🔹 SAME CARD FEEL AS EXPERIENCE / ABOUT / SKILLS
+  const cardBase =
+    "p-6 rounded-lg bg-gray-900/50 border shadow-xl " +
+    "backdrop-blur-sm hover:-translate-y-1 transition-all duration-300";
 
   return (
     <section
@@ -97,27 +101,28 @@ export default function CompetitiveProgramming() {
         animate="visible"
         transition={{ staggerChildren: 0.2 }}
       >
-        {/* Intro Text */}
+        {/* Intro */}
         <motion.p
           variants={fadeInUp}
           className="text-gray-300 text-center text-base sm:text-lg max-w-3xl mx-auto leading-relaxed"
         >
-          I am passionate about solving algorithmic challenges and actively participate in various competitive programming platforms. Over the years,  I&apos;ve improved my problem-solving skills and achieved notable rankings.
+          I am passionate about solving algorithmic challenges and actively
+          participate in various competitive programming platforms. Over the
+          years, I&apos;ve improved my problem-solving skills and achieved notable
+          rankings.
         </motion.p>
 
         {/* C++ Badge */}
-        <motion.div
-          variants={fadeInUp}
-          className="flex justify-center"
-        >
-          <div className="px-6 py-3 rounded-full bg-gradient-to-r from-blue-600/20 to-cyan-600/20 border border-cyan-500/40 shadow-lg shadow-cyan-500/20">
+        <motion.div variants={fadeInUp} className="flex justify-center">
+          <div className="px-6 py-3 rounded-full bg-gray-900/60 backdrop-blur-sm border border-cyan-500/30 shadow-lg">
             <span className="text-cyan-300 font-semibold text-sm sm:text-base">
-              Primary Language: <span className="text-white font-bold">C++</span>
+              Primary Language:{" "}
+              <span className="text-white font-bold">C++</span>
             </span>
           </div>
         </motion.div>
 
-        {/* Achievements Grid */}
+        {/* Achievements */}
         <motion.div
           variants={fadeInUp}
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
@@ -127,8 +132,8 @@ export default function CompetitiveProgramming() {
             return (
               <motion.div
                 key={idx}
-                whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
-                className={`p-6 rounded-lg bg-gradient-to-br ${colorClass.bg} border ${colorClass.border} shadow-xl hover:shadow-2xl transition-all duration-300`}
+                whileHover={{ scale: 1.03 }}
+                className={`${cardBase} ${colorClass.border}`}
               >
                 <div className="flex items-start gap-4">
                   <span className="text-4xl">{achievement.icon}</span>
@@ -136,7 +141,9 @@ export default function CompetitiveProgramming() {
                     <h3 className="text-xl font-bold text-white mb-1">
                       {achievement.platform}
                     </h3>
-                    <div className={`inline-block px-3 py-1 rounded-full ${colorClass.text} bg-gray-800/50 text-sm font-semibold mb-2`}>
+                    <div
+                      className={`inline-block px-3 py-1 rounded-full ${colorClass.text} bg-gray-800/60 text-sm font-semibold mb-2`}
+                    >
                       {achievement.badge}
                     </div>
                     <p className="text-gray-300 text-sm leading-relaxed">
@@ -149,108 +156,88 @@ export default function CompetitiveProgramming() {
           })}
         </motion.div>
 
-        {/* Platform Profiles Section */}
-        <motion.div
-          variants={fadeInUp}
-          className="p-6 rounded-lg bg-gradient-to-br from-gray-900/50 to-gray-800/30 border border-cyan-500/20 shadow-xl"
-        >
-          <h3 className="text-xl font-bold text-cyan-300 mb-4 flex items-center gap-2">
-            <span className="text-cyan-400">►</span> Platform Profiles
+        {/* Platform Profiles */}
+        <motion.div variants={fadeInUp} className={`${cardBase} border-cyan-500/20`}>
+          <h3 className="text-xl font-bold text-cyan-300 mb-4">
+            ► Platform Profiles
           </h3>
           <div className="space-y-3">
-            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
-              <div className="flex items-center gap-2">
-                <span className="text-blue-400 text-sm">▹</span>
-                <span className="text-gray-400">Codeforces:</span>
+            {[
+              {
+                name: "Codeforces",
+                color: "text-blue-400",
+                link: "https://codeforces.com/profile/vibhorsaxena000",
+                label: "vibhorsaxena000",
+              },
+              {
+                name: "CodeChef",
+                color: "text-orange-400",
+                link: "https://www.codechef.com/users/chaosconqueror",
+                label: "chaosconqueror",
+              },
+              {
+                name: "LeetCode",
+                color: "text-green-400",
+                link: "https://leetcode.com/u/VibhorSaxena-23/",
+                label: "VibhorSaxena-23",
+              },
+            ].map((p) => (
+              <div key={p.name} className="flex flex-wrap gap-3 items-center">
+                <span className="text-gray-400">{p.name}:</span>
+                <a
+                  href={p.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`px-3 py-1 bg-gray-800 rounded font-semibold text-sm ${p.color} hover:scale-105 transition`}
+                >
+                  {p.label} →
+                </a>
               </div>
-              <a
-                href="https://codeforces.com/profile/vibhorsaxena000"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-3 py-1 bg-gray-800 text-blue-400 rounded font-semibold text-sm hover:bg-blue-900/30 hover:scale-105 transition-all duration-300 inline-block w-fit"
-              >
-                vibhorsaxena000 →
-              </a>
-            </div>
-            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
-              <div className="flex items-center gap-2">
-                <span className="text-orange-400 text-sm">▹</span>
-                <span className="text-gray-400">CodeChef:</span>
-              </div>
-              <a
-                href="https://www.codechef.com/users/chaosconqueror"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-3 py-1 bg-gray-800 text-orange-400 rounded font-semibold text-sm hover:bg-orange-900/30 hover:scale-105 transition-all duration-300 inline-block w-fit"
-              >
-                chaosconqueror →
-              </a>
-            </div>
-            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
-              <div className="flex items-center gap-2">
-                <span className="text-green-400 text-sm">▹</span>
-                <span className="text-gray-400">LeetCode:</span>
-              </div>
-              <a
-                href="https://leetcode.com/u/VibhorSaxena-23/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-3 py-1 bg-gray-800 text-green-400 rounded font-semibold text-sm hover:bg-green-900/30 hover:scale-105 transition-all duration-300 inline-block w-fit"
-              >
-                VibhorSaxena-23 →
-              </a>
-            </div>
+            ))}
           </div>
         </motion.div>
 
         {/* GitHub Repo */}
-        <motion.div
-          variants={fadeInUp}
-          className="p-6 rounded-lg bg-gradient-to-br from-green-900/10 to-gray-900/50 border border-green-500/30 shadow-xl"
-        >
-          <h3 className="text-xl font-bold text-green-300 mb-3 flex items-center gap-2">
-            <span className="text-green-400">►</span> Problem Collection
+        <motion.div variants={fadeInUp} className={`${cardBase} border-green-500/30`}>
+          <h3 className="text-xl font-bold text-green-300 mb-3">
+            ► Problem Collection
           </h3>
           <p className="text-gray-300 mb-4 text-sm sm:text-base">
-            I curate high quality competitive programming problems organized by topics and difficulty levels for reference and practice.
+            I curate high quality competitive programming problems organized by
+            topics and difficulty levels for reference and practice.
           </p>
           <a
             href="https://github.com/VibhorSaxena-23/DSA_Topic_wise_problems"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-green-600/20 hover:bg-green-600/30 border border-green-500/40 rounded-lg text-green-300 font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-green-500/20"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-green-600/20 hover:bg-green-600/30 border border-green-500/40 rounded-lg text-green-300 font-semibold transition-all duration-300 hover:scale-105 shadow-lg"
           >
-            <span>📂</span>
-            <span>View Problem Collection</span>
-            <span>→</span>
+            📂 View Problem Collection →
           </a>
         </motion.div>
 
-        {/* Inspirational Quote */}
+        {/* Quote */}
         <motion.div
           variants={fadeInUp}
-          className="relative p-8 rounded-lg bg-gradient-to-br from-gray-900/70 to-gray-800/40 border border-gray-700/50 shadow-2xl"
+          className={`${cardBase} border-gray-700/50 text-center`}
         >
-          <div className="absolute top-4 left-4 text-6xl text-cyan-500/20 font-serif">&ldquo;</div>
-          <blockquote className="relative z-10 text-center">
-            <p className="text-gray-300 text-base sm:text-lg italic leading-relaxed mb-4 px-8">
-              I stopped worrying about competition in contemporary art. It feels a little bit more pure. That&apos;s where I am, one step back.
-            </p>
-            <footer className="text-cyan-400 font-semibold">
-              — Takashi Murakami
-            </footer>
-          </blockquote>
-          <div className="absolute bottom-4 right-4 text-6xl text-cyan-500/20 font-serif rotate-180">&ldquo;</div>
+          <p className="text-gray-300 italic mb-4">
+            “I stopped worrying about competition in contemporary art. It feels a
+            little bit more pure.”
+          </p>
+          <footer className="text-cyan-400 font-semibold">
+            — Takashi Murakami
+          </footer>
         </motion.div>
 
-        {/* Bottom decorative divider */}
+        {/* Divider */}
         <motion.div
           variants={fadeInUp}
           className="flex justify-center items-center gap-4 pt-8 pb-4"
         >
-          <div className="h-px w-20 bg-gradient-to-r from-transparent to-cyan-500"></div>
+          <div className="h-px w-20 bg-gradient-to-r from-transparent to-cyan-500" />
           <span className="text-cyan-400 text-2xl">◆</span>
-          <div className="h-px w-20 bg-gradient-to-l from-transparent to-cyan-500"></div>
+          <div className="h-px w-20 bg-gradient-to-l from-transparent to-cyan-500" />
         </motion.div>
       </motion.div>
     </section>

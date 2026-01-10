@@ -142,7 +142,7 @@ export default function Background() {
 
     draw();
 
-    // ✅ CLEANUP (no leaks)
+
     return () => {
       window.removeEventListener("resize", resize);
       window.removeEventListener("mousemove", handleMouseMove);
