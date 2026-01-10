@@ -7,10 +7,9 @@ export default function Experience() {
   const experiences = [
     {
       company: "ITJOBXS",
-      logo: "💼",
       role: "Software Engineer Intern",
       location: "Remote",
-      duration: "July 2025 – Present",
+      duration: "June 2025 – August 2025",
       color: "cyan",
       description: [
         "Designed and developed a fully responsive web page for multiple company interview experiences",
@@ -21,7 +20,6 @@ export default function Experience() {
     },
     {
       company: "SEMS Welfare Foundation",
-      logo: "🌐",
       role: "UI/UX & Web Development Intern",
       location: "Remote",
       duration: "May 2024 – July 2024",
@@ -34,7 +32,6 @@ export default function Experience() {
     },
     {
       company: "AddLens Technologies",
-      logo: "🤖",
       role: "Machine Learning Intern",
       location: "Remote",
       duration: "May 2024 – July 2024",
@@ -117,7 +114,6 @@ export default function Experience() {
                 >
                   {/* Header */}
                   <div className="flex items-start gap-4 mb-6 pb-6 border-b border-gray-700/50">
-                    <div className="text-5xl">{exp.logo}</div>
                     <div className="flex-1">
                       <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">
                         {exp.company}

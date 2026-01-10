@@ -6,17 +6,6 @@
 /* Import Tailwind */
 @import "tailwindcss";
 
-@media (max-width: 767px) {
-  html,
-  body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-  }
-}
-
-
-
 /* Your custom theme + animations */
 :root {
   --color-primary: #030412;
@@ -49,13 +38,6 @@
       rotate(calc((var(--angle) * -1deg) - 360deg));
   }
 }
-
-@media (min-width: 1024px) {
-  * {
-    cursor: none !important;
-  }
-}
-
 
 @keyframes marquee {
   from {
@@ -95,8 +77,8 @@ body {
   color: white;
   scroll-behavior: smooth;
   overflow-x: hidden;
+  cursor: none;
 }
-
 
 
 .animate-blink {

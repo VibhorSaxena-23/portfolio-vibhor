@@ -23,16 +23,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="relative min-h-screen w-full overflow-x-hidden text-gray-900">
+      <body className="relative text-gray-900 overflow-x-hidden">
         <CursorProvider>
-          {/* Background & cursor auto-disable on mobile */}
+          {/* These components are CLIENT components
+              and will self-disable on mobile */}
           <Background />
           <CustomCursor />
 
           <Navbar />
 
-          {/* Main content */}
-          <main className="relative z-10 w-full pt-20">
+          <main className="pt-20 relative z-10">
             {children}
           </main>
         </CursorProvider>
