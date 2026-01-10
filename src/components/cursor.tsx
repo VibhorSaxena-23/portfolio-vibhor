@@ -1,78 +1,106 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useCursorContext } from '../context/cursorcontext';
 
 const CURSOR_SIZE = 30;
-const SPRING_CONFIG = { damping: 20, stiffness: 300, mass: 0.5 };
+const DESKTOP_WIDTH = 1024;
 
 export default function CustomCursor() {
   const { isHovering } = useCursorContext();
+  const [isDesktop, setIsDesktop] = useState(false);
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const cursorX = useSpring(mouseX, SPRING_CONFIG);
-  const cursorY = useSpring(mouseY, SPRING_CONFIG);
 
-  const ghostX = useSpring(mouseX, { damping: 30, stiffness: 120 });
-  const ghostY = useSpring(mouseY, { damping: 30, stiffness: 120 });
+  const cursorX = useSpring(mouseX, { stiffness: 500, damping: 30 });
+  const cursorY = useSpring(mouseY, { stiffness: 500, damping: 30 });
 
+  const ghostX = useSpring(mouseX, { stiffness: 120, damping: 35 });
+  const ghostY = useSpring(mouseY, { stiffness: 120, damping: 35 });
+
+  // Click pulse
   const clickPulse = useMotionValue(0);
-  const clickScale = useTransform(clickPulse, v => 1 + v * 0.6); // ✅ FIXED
+  const clickScale = useTransform(clickPulse, v => 1 + v * 0.6);
 
+  /* ----------------------------------
+     Desktop-only check (screen width)
+  ---------------------------------- */
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
+    const check = () => setIsDesktop(window.innerWidth >= DESKTOP_WIDTH);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
+  /* ----------------------------------
+     Mouse tracking (desktop only)
+  ---------------------------------- */
+  useEffect(() => {
+    if (!isDesktop) return;
+
+    const move = (e: MouseEvent) => {
       mouseX.set(e.clientX - CURSOR_SIZE / 2);
       mouseY.set(e.clientY - CURSOR_SIZE / 2);
-    }
+    };
 
-    const handleClick = () => {
+    const click = () => {
       clickPulse.set(1);
       setTimeout(() => clickPulse.set(0), 150);
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('click', handleClick);
+    document.addEventListener('mousemove', move);
+    document.addEventListener('click', click);
+
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('click', handleClick);
+      document.removeEventListener('mousemove', move);
+      document.removeEventListener('click', click);
     };
-  },  [clickPulse, mouseX, mouseY]);
+  }, [isDesktop, mouseX, mouseY, clickPulse]);
+
+  // 🚫 Mobile: no cursor
+  if (!isDesktop) return null;
 
   return (
     <>
-      {/* Aura Trail */}
+      {/* Aura / Ghost trail */}
       <motion.div
-        className="fixed top-0 left-0 z-[9998] pointer-events-none rounded-full blur-md"
+        className="fixed top-0 left-0 z-[9998] pointer-events-none rounded-full"
         style={{
           translateX: ghostX,
           translateY: ghostY,
           width: CURSOR_SIZE,
           height: CURSOR_SIZE,
-          backgroundColor: 'rgba(0, 140, 255, 0.2)',
-          filter: 'blur(12px)',
+          backgroundColor: 'rgba(0, 140, 255, 0.25)',
+          filter: 'blur(14px)',
         }}
       />
 
       {/* Main Cursor */}
-      <motion.div
-        className="fixed top-0 left-0 z-[9999] pointer-events-none rounded-full"
-        animate={{
-          opacity: isHovering ? 0 : 1,
-        }}
-        style={{
-          translateX: cursorX,
-          translateY: cursorY,
-          scale: isHovering ? 0.5 : clickScale, // ✅ Use animated scale
-          width: CURSOR_SIZE,
-          height: CURSOR_SIZE,
-          backgroundColor: 'rgba(5, 142, 255, 0.91)',
-          boxShadow: '0 0 8px 4px rgba(0, 140, 255, 0.7)',
-          mixBlendMode: 'difference',
-        }}
-        transition={{ type: 'spring', stiffness: 500, damping: 25 }}
-      />
+<motion.div
+  className="fixed top-0 left-0 z-[9999] pointer-events-none rounded-full"
+  animate={{
+    scale: isHovering ? 0.45 : 1,
+    opacity: isHovering ? 0.6 : 1,
+  }}
+  style={{
+    translateX: cursorX,
+    translateY: cursorY,
+    scale: clickScale,
+    width: CURSOR_SIZE,
+    height: CURSOR_SIZE,
+    backgroundColor: 'rgba(5, 142, 255, 0.9)',
+    boxShadow: '0 0 12px 5px rgba(0, 140, 255, 0.85)',
+    mixBlendMode: 'difference', // ✅ ORIGINAL TRANSPARENCY EFFECT
+  }}
+  transition={{
+    type: 'spring',
+    stiffness: 400,
+    damping: 25,
+  }}
+/>
+
     </>
   );
 }
