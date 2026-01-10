@@ -111,7 +111,7 @@ export default function Skills() {
       className="min-h-screen flex flex-col px-6 sm:px-20 max-w-6xl mx-auto space-y-10 font-mono mb-20"
     >
       {/* ✅ Unified Section Heading */}
-      <SectionHeading text="Skills & Expertise" />
+      <SectionHeading text="Skills" />
 
       <motion.p
         className="text-gray-300 text-center text-base sm:text-lg max-w-2xl mx-auto"

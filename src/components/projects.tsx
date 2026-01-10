@@ -123,7 +123,7 @@ export default function Projects() {
       className="min-h-screen flex flex-col px-6 sm:px-20 max-w-6xl mx-auto space-y-12 font-mono mb-20"
     >
       {/* Heading */}
-      <SectionHeading text="Featured Projects" />
+      <SectionHeading text="Projects" />
 
       <motion.div
         className="grid grid-cols-1 lg:grid-cols-2 gap-8"

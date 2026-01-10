@@ -66,7 +66,7 @@ export default function CompetitiveProgramming() {
       className="min-h-screen flex flex-col px-6 sm:px-20 max-w-5xl mx-auto space-y-10 font-mono mb-20"
     >
       {/* ✅ Unified Section Heading */}
-      <SectionHeading text="Competitive Programming" />
+      <SectionHeading text="CP Profile" />
 
       <motion.div
         className="flex flex-col gap-8"

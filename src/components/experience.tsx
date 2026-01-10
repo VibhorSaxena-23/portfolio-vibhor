@@ -87,7 +87,7 @@ export default function Experience() {
       className="min-h-screen flex flex-col px-6 sm:px-20 max-w-6xl mx-auto space-y-10 font-mono mb-20"
     >
       {/* ✅ Unified Section Heading */}
-      <SectionHeading text="Past Work Experience" />
+      <SectionHeading text="Experience" />
 
       <motion.div
         className="flex flex-col gap-12"
