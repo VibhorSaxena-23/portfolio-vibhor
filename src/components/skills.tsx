@@ -1,46 +1,27 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import SectionHeading from "@/components/SectionHeading";
 
 export default function Skills() {
-  const fullText = "| Skills & Expertise |";
-  const [displayText, setDisplayText] = useState("");
-  const [key, setKey] = useState(0);
-
-  useEffect(() => {
-    setKey((prev) => prev + 1);
-    let i = 0;
-    const interval = setInterval(() => {
-      setDisplayText(fullText.slice(0, i + 1));
-      i++;
-      if (i === fullText.length) clearInterval(interval);
-    }, 100);
-    return () => clearInterval(interval);
-  }, []);
-
   const skillCategories = [
     {
       title: "Languages",
-      icon: "{ }",
       color: "cyan",
       skills: ["C++", "Java", "Python", "JavaScript", "TypeScript"],
     },
     {
       title: "Backend & Databases",
-      icon: "⚙",
       color: "green",
       skills: ["Node.js", "Express", "MySQL", "MongoDB", "REST APIs"],
     },
     {
       title: "Frontend & Design",
-      icon: "🎨",
       color: "purple",
       skills: ["React", "Next.js", "Tailwind CSS", "UI/UX Design", "Framer Motion"],
     },
     {
-      title: "Core CS",
-      icon: "💻",
+      title: "Core Computer Science",
       color: "blue",
       skills: [
         "Data Structures",
@@ -52,13 +33,11 @@ export default function Skills() {
     },
     {
       title: "Tools & Platforms",
-      icon: "🛠",
       color: "orange",
       skills: ["Git", "Docker", "Cloud Computing", "Microservices", "Linux"],
     },
     {
       title: "Specializations",
-      icon: "⭐",
       color: "yellow",
       skills: [
         "Competitive Programming",
@@ -90,42 +69,36 @@ export default function Skills() {
   const getColorClasses = (color: string) => {
     const colors: Record<
       string,
-      { border: string; text: string; bg: string; shadow: string }
+      { border: string; text: string; shadow: string }
     > = {
       cyan: {
         border: "border-cyan-500/30",
         text: "text-cyan-400",
-        bg: "bg-gray-900/50",
         shadow: "shadow-cyan-500/10",
       },
       green: {
         border: "border-green-500/30",
         text: "text-green-400",
-        bg: "bg-gray-900/50",
         shadow: "shadow-green-500/10",
       },
       purple: {
         border: "border-purple-500/30",
         text: "text-purple-400",
-        bg: "bg-gray-900/50",
         shadow: "shadow-purple-500/10",
       },
       blue: {
         border: "border-blue-500/30",
         text: "text-blue-400",
-        bg: "bg-gray-900/50",
         shadow: "shadow-blue-500/10",
       },
       orange: {
         border: "border-orange-500/30",
         text: "text-orange-400",
-        bg: "bg-gray-900/50",
         shadow: "shadow-orange-500/10",
       },
       yellow: {
         border: "border-yellow-500/30",
         text: "text-yellow-400",
-        bg: "bg-gray-900/50",
         shadow: "shadow-yellow-500/10",
       },
     };
@@ -135,34 +108,23 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="min-h-screen flex flex-col px-6 sm:px-20 max-w-6xl mx-auto space-y-10 font-mono py-0 mb-20"
+      className="min-h-screen flex flex-col px-6 sm:px-20 max-w-6xl mx-auto space-y-10 font-mono mb-20"
     >
-      {/* Typing Heading */}
-      <motion.h2
-        className="relative text-4xl sm:text-5xl font-extrabold text-center text-white tracking-wider mb-8"
-        initial={{ opacity: 0, y: -50, scale: 0.8 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 1, type: "spring" }}
-      >
-        <span className="px-8 py-3 inline-block border-y-4 border-cyan-500 shadow-lg shadow-cyan-500/30">
-          {displayText}
-          <span className="animate-pulse text-cyan-400">▌</span>
-        </span>
-      </motion.h2>
+      {/* ✅ Unified Section Heading */}
+      <SectionHeading text="Skills & Expertise" />
 
       <motion.p
         className="text-gray-300 text-center text-base sm:text-lg max-w-2xl mx-auto"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.5, duration: 0.8 }}
+        transition={{ delay: 0.4, duration: 0.8 }}
       >
-        A comprehensive overview of technologies, frameworks, and tools I&apos;ve
+        A comprehensive overview of technologies, frameworks, and tools I’ve
         mastered through projects, internships, and competitive programming.
       </motion.p>
 
       {/* Skills Grid */}
       <motion.div
-        key={key}
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         variants={containerVariants}
         initial="hidden"
@@ -175,11 +137,9 @@ export default function Skills() {
               key={idx}
               variants={cardVariants}
               whileHover={{ scale: 1.03 }}
-              className={`p-6 rounded-xl ${colorClass.bg} border ${colorClass.border} ${colorClass.shadow} shadow-xl backdrop-blur-sm hover:-translate-y-1 transition-all duration-300`}
+              className={`p-6 rounded-xl bg-gray-900/50 border ${colorClass.border} ${colorClass.shadow} shadow-xl backdrop-blur-sm hover:-translate-y-1 transition-all duration-300`}
             >
-              {/* Header */}
-              <div className="flex items-center gap-3 mb-4 pb-3 border-b border-gray-700/50">
-                <span className="text-3xl">{category.icon}</span>
+              <div className="mb-4 pb-3 border-b border-gray-700/50">
                 <h3
                   className={`text-xl font-bold ${colorClass.text} tracking-wide`}
                 >
@@ -187,7 +147,6 @@ export default function Skills() {
                 </h3>
               </div>
 
-              {/* Skills */}
               <ul className="space-y-2">
                 {category.skills.map((skill, skillIdx) => (
                   <li
@@ -205,16 +164,11 @@ export default function Skills() {
       </motion.div>
 
       {/* Divider */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.8 }}
-        className="flex justify-center items-center gap-4 pt-8 pb-4"
-      >
+      <div className="flex justify-center items-center gap-4 pt-8 pb-4">
         <div className="h-px w-20 bg-gradient-to-r from-transparent to-cyan-500" />
         <span className="text-cyan-400 text-2xl">◆</span>
         <div className="h-px w-20 bg-gradient-to-l from-transparent to-cyan-500" />
-      </motion.div>
+      </div>
     </section>
   );
 }

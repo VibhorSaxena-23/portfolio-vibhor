@@ -92,7 +92,7 @@ export default function CustomCursor() {
     height: CURSOR_SIZE,
     backgroundColor: 'rgba(5, 142, 255, 0.9)',
     boxShadow: '0 0 12px 5px rgba(0, 140, 255, 0.85)',
-    mixBlendMode: 'difference', // ✅ ORIGINAL TRANSPARENCY EFFECT
+    mixBlendMode: 'difference',
   }}
   transition={{
     type: 'spring',

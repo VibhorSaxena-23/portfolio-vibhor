@@ -1,24 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import SectionHeading from "@/components/SectionHeading";
 
 export default function About() {
-  const fullText = "| About Me |";
-  const [displayText, setDisplayText] = useState("");
-  const [key, setKey] = useState(0);
-
-  useEffect(() => {
-    setKey((prev) => prev + 1);
-    let i = 0;
-    const interval = setInterval(() => {
-      setDisplayText(fullText.slice(0, i + 1));
-      i++;
-      if (i === fullText.length) clearInterval(interval);
-    }, 100);
-    return () => clearInterval(interval);
-  }, []);
-
   const fadeInUp = {
     hidden: { opacity: 0, y: 60, scale: 0.96 },
     visible: {
@@ -29,7 +14,7 @@ export default function About() {
     },
   };
 
-  // 🔹 SAME STYLE AS EXPERIENCE (subtle blur)
+  // 🔹 Same subtle card style used across sections
   const cardStyle =
     "p-6 rounded-2xl bg-gray-900/50 border border-cyan-500/20 " +
     "shadow-xl backdrop-blur-sm hover:-translate-y-1 " +
@@ -40,21 +25,10 @@ export default function About() {
       id="about"
       className="min-h-screen flex flex-col px-6 sm:px-20 max-w-5xl mx-auto space-y-10 font-mono py-0 mb-20"
     >
-      {/* Typing Heading */}
-      <motion.h2
-        className="relative text-4xl sm:text-5xl font-extrabold text-center text-white tracking-wider mb-8"
-        initial={{ opacity: 0, y: -50, scale: 0.8 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 1, type: "spring" }}
-      >
-        <span className="px-8 py-3 inline-block border-y-4 border-cyan-500 shadow-lg shadow-cyan-500/30">
-          {displayText}
-          <span className="animate-pulse text-cyan-400">▌</span>
-        </span>
-      </motion.h2>
+      {/* Section Heading */}
+      <SectionHeading text="About Me" />
 
       <motion.div
-        key={key}
         className="flex flex-col gap-8 text-gray-300 text-base sm:text-lg leading-relaxed"
         initial="hidden"
         animate="visible"
@@ -157,7 +131,7 @@ export default function About() {
               "Algorithms",
               "DBMS",
               "Operating Systems",
-              "OOP",
+              "Object Oriented Programming",
               "Software Engineering",
               "Machine Learning & Pattern Recognition",
               "Big Data Analysis",
@@ -169,8 +143,6 @@ export default function About() {
             ))}
           </ul>
         </motion.div>
-
-       
 
         {/* Divider */}
         <motion.div
