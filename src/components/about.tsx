@@ -105,7 +105,7 @@ export default function About() {
         {/* Responsibilities */}
         <motion.div variants={fadeInUp} className={cardStyle}>
           <h3 className="text-2xl sm:text-3xl font-bold uppercase tracking-widest mb-4 text-cyan-300">
-            ► Responsibilities
+            Responsibilities
           </h3>
           <p>
             • Worked as a{" "}
@@ -122,7 +122,7 @@ export default function About() {
         {/* Coursework */}
         <motion.div variants={fadeInUp} className={cardStyle}>
           <h3 className="text-2xl sm:text-3xl font-bold uppercase tracking-widest mb-4 text-cyan-300">
-            ► Computer Science Coursework
+            Computer Science Coursework
           </h3>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {[
