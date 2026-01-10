@@ -14,7 +14,7 @@ export default function About() {
     },
   };
 
-  // 🔹 Same subtle card style used across sections
+  // Consistent card style used across sections
   const cardStyle =
     "p-6 rounded-2xl bg-gray-900/50 border border-cyan-500/20 " +
     "shadow-xl backdrop-blur-sm hover:-translate-y-1 " +
@@ -23,10 +23,19 @@ export default function About() {
   return (
     <section
       id="about"
-      className="min-h-screen flex flex-col px-6 sm:px-20 max-w-5xl mx-auto space-y-10 font-mono py-0 mb-20"
+      className="
+        min-h-screen
+        flex flex-col
+        justify-center
+        px-6 sm:px-20
+        max-w-5xl mx-auto
+        space-y-10
+        font-mono
+        py-0 mb-20
+      "
     >
       {/* Section Heading */}
-      <SectionHeading text="About" />
+      <SectionHeading text="About Me" />
 
       <motion.div
         className="flex flex-col gap-8 text-gray-300 text-base sm:text-lg leading-relaxed"
@@ -40,7 +49,8 @@ export default function About() {
             Hey, I am{" "}
             <span className="font-bold text-cyan-400">Vibhor Saxena</span>!
             <br />
-            I am a <span className="font-semibold">B.Tech Computer Science</span>{" "}
+            I am a{" "}
+            <span className="font-semibold">B.Tech Computer Science</span>{" "}
             undergraduate at{" "}
             <span className="font-bold text-cyan-400">
               JK Lakshmipat University
